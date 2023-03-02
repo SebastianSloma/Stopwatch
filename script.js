@@ -15,7 +15,7 @@ let countTime;
 let minutes = 0;
 let seconds = 0;
 
-let timesArr =[]
+let timesArr = [];
 
 const handleStart = () => {
 	clearInterval(countTime);
@@ -40,16 +40,23 @@ const handlePause = () => {
 };
 
 const handleStop = () => {
+	time.innerHTML = `Last time: ${stopwatch.textContent}`;
 
-    time.innerHTML = `Last time: ${stopwatch.textContent}`
+	if (stopwatch.textContent !== '0:00') {
+		time.style.visibility = 'visible';
+		timesArr.push(stopwatch.textContent);
+	}
 
-    if (stopwatch.textContent !== '0:00'){
-        time.style.visibility = 'visible'
-        timesArr.push(stopwatch.textContent)
-        
-    }
+	clearStuff();
+};
 
+const handleReset = () => {
+	time.style.visibility = 'hidden';
+	timesArr = [];
+	clearStuff();
+};
 
+const clearStuff = () => {
 	clearInterval(countTime);
 
 	stopwatch.textContent = '0:00';
@@ -61,3 +68,4 @@ const handleStop = () => {
 startBtn.addEventListener('click', handleStart);
 pauseBtn.addEventListener('click', handlePause);
 stopBtn.addEventListener('click', handleStop);
+resetBtn.addEventListener('click', handleReset);
