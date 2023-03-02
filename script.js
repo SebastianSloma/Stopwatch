@@ -65,7 +65,36 @@ const clearStuff = () => {
 	minutes = 0;
 };
 
+const showHistory = () => {
+    timeList.textContent = '';
+    let num =1
+
+	timesArr.forEach(time => {
+		const newTime = document.createElement('li');
+		newTime.innerHTML = `Measurement no. ${num}: <span>${time}</span>`;
+
+		timeList.appendChild(newTime);
+        num++
+	});
+};
+
+
+const showModal =() =>{
+    if(!(modalShadow.style.display === 'block')){
+        modalShadow.style.display ='block'
+    }else{
+        modalShadow.style.display ='none'
+    }
+
+    modalShadow.classList.toggle('modal-animation')
+
+}
+
 startBtn.addEventListener('click', handleStart);
 pauseBtn.addEventListener('click', handlePause);
 stopBtn.addEventListener('click', handleStop);
 resetBtn.addEventListener('click', handleReset);
+historyBtn.addEventListener('click', showHistory);
+infoBtn.addEventListener('click', showModal);
+closeModalBtn.addEventListener('click', showModal)
+window.addEventListener('click', e=>e.target ===modalShadow ? showModal() : false)
