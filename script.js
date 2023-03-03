@@ -11,20 +11,23 @@ const infoBtn = document.querySelector('.fa-question');
 const modalShadow = document.querySelector('.modal-shadow');
 const closeModalBtn = document.querySelector('.close');
 
-const colorBtn = document.querySelector('.fa-paintbrush');
-const colorPanel = document.querySelector('colors')
-
-const colorOne = document.querySelector('one');
-const colorTwo = document.querySelector('two');
-const colorThree = document.querySelector('three');
-const colorFour = document.querySelector('four');
-let root = document.documentElement;
 
 let countTime;
 let minutes = 0;
 let seconds = 0;
 
 let timesArr = [];
+
+const colorBtn = document.querySelector('.fa-paintbrush');
+const colorPanel = document.querySelector('.colors')
+
+const colorOne = document.querySelector('.one');
+const colorTwo = document.querySelector('.two');
+const colorThree = document.querySelector('.three');
+const colorFour = document.querySelector('.four');
+let root = document.documentElement;
+
+
 
 const handleStart = () => {
 	clearInterval(countTime);
@@ -104,6 +107,7 @@ resetBtn.addEventListener('click', handleReset);
 historyBtn.addEventListener('click', showHistory);
 infoBtn.addEventListener('click', showModal);
 closeModalBtn.addEventListener('click', showModal);
+
 window.addEventListener('click', (e) =>
 	e.target === modalShadow ? showModal() : false
 );
@@ -114,14 +118,18 @@ colorBtn.addEventListener('click', () =>{
 })
 
 colorOne.addEventListener('click', () => {
-	root.style.setProperty('--first-color', 'red');
+	root.style.setProperty('--first-color', 'rgb(251, 11, 11)');
+	root.style.setProperty('--hover-color', 'rgb(200, 18, 18)')
 });
 colorTwo.addEventListener('click', () => {
-	root.style.setProperty('--first-color', 'royalblue');
+	root.style.setProperty('--first-color', 'rgb(0, 174, 255)');
+	root.style.setProperty('--hover-color', 'rgb(13, 144, 205)')
 });
 colorThree.addEventListener('click', () => {
-	root.style.setProperty('--first-color', 'greenyellow');
+	root.style.setProperty('--first-color', 'rgb(35, 190, 125)');
+	root.style.setProperty('--hover-color', 'rgb(0, 254, 148)')
 });
 colorFour.addEventListener('click', () => {
-	root.style.setProperty('--first-color', 'gold');
+	root.style.setProperty('--first-color', 'rgb(255, 215, 0)');
+	root.style.setProperty('--hover-color', 'rgb(214, 214, 32)')
 });
